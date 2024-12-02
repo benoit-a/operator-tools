@@ -1,4 +1,4 @@
-LICENSEI_VERSION = 0.2.0
+LICENSEI_VERSION = 0.9.0
 GOLANGCI_VERSION = 1.21.0
 
 # Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
@@ -11,13 +11,13 @@ endif
 BIN := ${PWD}/bin
 export PATH := ${BIN}:${PATH}
 
-CONTROLLER_GEN_VERSION = v0.8.0
+CONTROLLER_GEN_VERSION = v0.14.0
 CONTROLLER_GEN = $(PWD)/bin/controller-gen
 
 OS = $(shell uname | tr A-Z a-z)
 
 ENVTEST_BIN_DIR := ${BIN}/envtest
-ENVTEST_K8S_VERSION := 1.24.1
+ENVTEST_K8S_VERSION := 1.29.1
 ENVTEST_BINARY_ASSETS := ${ENVTEST_BIN_DIR}/bin
 
 SETUP_ENVTEST := ${BIN}/setup-envtest
@@ -87,10 +87,10 @@ generate-type-docs:
 	go run cmd/docs.go
 
 ${ENVTEST_BINARY_ASSETS}: ${ENVTEST_BINARY_ASSETS}_${ENVTEST_K8S_VERSION}
-	ln -sf $(notdir $<) $@
+	ln -snf $(notdir $<) $@
 
 ${ENVTEST_BINARY_ASSETS}_${ENVTEST_K8S_VERSION}: | ${SETUP_ENVTEST} ${ENVTEST_BIN_DIR}
-	ln -sf $$(${SETUP_ENVTEST} --bin-dir ${ENVTEST_BIN_DIR} use ${ENVTEST_K8S_VERSION} -p path) $@
+	ln -snf $$(${SETUP_ENVTEST} --bin-dir ${ENVTEST_BIN_DIR} use ${ENVTEST_K8S_VERSION} -p path) $@
 
 ${SETUP_ENVTEST}: IMPORT_PATH := sigs.k8s.io/controller-runtime/tools/setup-envtest
 ${SETUP_ENVTEST}: VERSION := latest
