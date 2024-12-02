@@ -1,4 +1,4 @@
-LICENSEI_VERSION = 0.2.0
+LICENSEI_VERSION = 0.9.0
 GOLANGCI_VERSION = 1.21.0
 
 # Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
