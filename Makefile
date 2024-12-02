@@ -11,7 +11,7 @@ endif
 BIN := ${PWD}/bin
 export PATH := ${BIN}:${PATH}
 
-CONTROLLER_GEN_VERSION = v0.8.0
+CONTROLLER_GEN_VERSION = v0.14.0
 CONTROLLER_GEN = $(PWD)/bin/controller-gen
 
 OS = $(shell uname | tr A-Z a-z)
